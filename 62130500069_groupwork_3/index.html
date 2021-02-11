@@ -21,41 +21,54 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
 
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanalei&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+ 
 </head>
 
 <body>
 
-  <div id="app">
-    <div class="container d-flex justify-content-center">
-   <img
-      src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/083bbf10-4b8c-474e-8b2b-bc4169faf93d/de80nrf-9012ad85-fbb7-4ce1-a4ff-21381e7f6953.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMDgzYmJmMTAtNGI4Yy00NzRlLThiMmItYmM0MTY5ZmFmOTNkXC9kZTgwbnJmLTkwMTJhZDg1LWZiYjctNGNlMS1hNGZmLTIxMzgxZTdmNjk1My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.8yN32JLreBykqv-lyZEanEJOOmnJfwlTDNQnLeE_q6E"
-      class="w-1/2">
-      <p>Number of liked members :<span> {{countliked}}</span></p>
-    </div>
-
-    <div class="container d-flex justify-content-center" v-for="(member,index) in members" :key="index">
+  <div id="app" >
+   
     
-      <div class="card p-3">
-        <div class="media"> <img v-bind:src="member.imgdefault" @mouseover="hoverimg(index)" @mouseout="unhover(index)" class="mr-3 w-1/2" >
-          <div class="media-body">
-            <h5 class="mt-2 mb-0">{{member.mbname}}</h5>
-            <div class="d-flex flex-row justify-content-between align-text-center"> <small
-                class="text-muted">{{member.position}}</small>
+  
+      <div class="container d-flex justify-content-center">
 
-                <span v-show=!member.like  @click="toggleLike(index)"><img src='./images/baseline_favorite_border_black_36dp.png' ></span>
-                <span  v-show=member.like  @click="toggleLike(index)"><img src='./images/baseline_favorite_black_36dp.png' ></span>
-              <!-- <span v-show={{member.like}}><img :src="./images/baseline_favorite_black_36dp.png" ></span> -->
+        <img
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/083bbf10-4b8c-474e-8b2b-bc4169faf93d/de80nrf-9012ad85-fbb7-4ce1-a4ff-21381e7f6953.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMDgzYmJmMTAtNGI4Yy00NzRlLThiMmItYmM0MTY5ZmFmOTNkXC9kZTgwbnJmLTkwMTJhZDg1LWZiYjctNGNlMS1hNGZmLTIxMzgxZTdmNjk1My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.8yN32JLreBykqv-lyZEanEJOOmnJfwlTDNQnLeE_q6E"
+          class="w-1/2">
+      </div>
+      
+      <p class="d-flex justify-content-center text-3xl tracking-widest text-blue-50 font-serif">favourite members:<span> {{countliked}}</span></p>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="container d-flex justify-content-center" v-for="(member,index) in members" :key="index">
+          <div class="card p-3">
+            <div class="media"> <img v-bind:src="member.imgdefault" @mouseover="hoverimg(index)"
+                @mouseout="unhover(index)" class="mr-3 w-1/2">
+              <div class="media-body">
+                <h5 class="mt-2 mb-0">{{member.mbname}}</h5>
+                <div class="grid grid-cols-2 gap-6 ">
+                  <div class="d-flex flex-row justify-content-between align-text-center w-24 min-w-full md:min-w-0 ">
+                    <small class="text-muted">{{member.position}}</small></div>
+
+                  <span v-show=!member.like @click="toggleLike(index)"><img
+                      src='./images/baseline_favorite_border_black_36dp.png'></span>
+                  <span v-show=member.like @click="toggleLike(index)"><img
+                      src='./images/baseline_favorite_black_36dp.png'></span>
+                  <!-- <span v-show={{member.like}}><img :src="./images/baseline_favorite_black_36dp.png" ></span> -->
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
-
   <!-- my main.js -->
-  <script src="main.js"></script>   
+  <script src="main.js"></script>
 </body>
 
 </html>
